@@ -1,0 +1,206 @@
+
+<!--working three-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Image Classification</title>-->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Image Classification</h1>-->
+<!--    <form id="upload-form" action="/classify" method="post" enctype="multipart/form-data">-->
+<!--        <input type="file" name="image" accept="image/*">-->
+<!--        <input type="submit" value="Upload and Classify">-->
+<!--    </form>-->
+<!--    <img id="display" src="" style="max-width: 500px;">-->
+<!--    <div id="result"></div>-->
+<!--    <script>-->
+<!--        document.getElementById('upload-form').addEventListener('submit', function(e) {-->
+<!--            e.preventDefault();-->
+
+<!--            var formData = new FormData(this);-->
+
+<!--            fetch('/classify', {-->
+<!--                method: 'POST',-->
+<!--                body: formData-->
+<!--            })-->
+<!--            .then(response => response.json())-->
+<!--            .then(data => {-->
+<!--                var resultDiv = document.getElementById('result');-->
+<!--                resultDiv.innerHTML = '';-->
+
+<!--                data.forEach(function(item) {-->
+<!--                    var label = item.label;-->
+<!--                    var score = item.score;-->
+
+<!--                    var progress = document.createElement('div');-->
+<!--                    progress.className = 'progress';-->
+<!--                    progress.innerHTML = '<span class="label">' + label + '</span><progress value="' + (score * 100) + '" max="100"></progress><span class="score">' + (score * 100).toFixed(2) + '%</span>';-->
+
+<!--                    resultDiv.appendChild(progress);-->
+<!--                });-->
+<!--            })-->
+<!--            .catch(error => console.error('Error:', error));-->
+<!--        });-->
+
+<!--        function displayImage(input) {-->
+<!--            var reader = new FileReader();-->
+<!--            reader.onload = function(e) {-->
+<!--                document.getElementById('display').src = e.target.result;-->
+<!--            }-->
+<!--            reader.readAsDataURL(input.files[0]);-->
+<!--        }-->
+
+<!--        document.querySelector('input[type="file"]').addEventListener('change', function() {-->
+<!--            displayImage(this);-->
+<!--            document.getElementById('display').style.display = 'block';-->
+<!--            document.getElementById('result').innerHTML = ''; // Clear previous results-->
+<!--        });-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--working 4-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Image Classification</title>-->
+<!--    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">-->
+<!--</head>-->
+<!--<body>-->
+<!--    <h1>Image Classification</h1>-->
+<!--    <form id="upload-form" action="/classify" method="post" enctype="multipart/form-data">-->
+<!--        <input type="file" name="image" accept="image/*">-->
+<!--        <input type="submit" value="Upload and Classify">-->
+<!--    </form>-->
+<!--    <div id="loading" style="display:none;"><div class="loader"></div>Loading...</div>-->
+<!--    <img id="display" src="" style="max-width: 500px;">-->
+<!--    <div id="result"></div>-->
+<!--    <script>-->
+<!--        document.getElementById('upload-form').addEventListener('submit', function(e) {-->
+<!--            e.preventDefault();-->
+
+<!--            var formData = new FormData(this);-->
+
+<!--            var loading = document.getElementById('loading');-->
+<!--            loading.style.display = 'block';-->
+
+<!--            fetch('/classify', {-->
+<!--                method: 'POST',-->
+<!--                body: formData-->
+<!--            })-->
+<!--            .then(response => response.json())-->
+<!--            .then(data => {-->
+<!--                var resultDiv = document.getElementById('result');-->
+<!--                resultDiv.innerHTML = '';-->
+
+<!--                data.forEach(function(item) {-->
+<!--                    var label = item.label;-->
+<!--                    var score = item.score;-->
+
+<!--                    var progress = document.createElement('div');-->
+<!--                    progress.className = 'progress';-->
+<!--                    progress.innerHTML = '<span class="label">' + label + '</span><progress value="' + (score * 100) + '" max="100"></progress><span class="score">' + (score * 100).toFixed(2) + '%</span>';-->
+
+<!--                    resultDiv.appendChild(progress);-->
+<!--                });-->
+
+<!--                loading.style.display = 'none';-->
+<!--            })-->
+<!--            .catch(error => console.error('Error:', error));-->
+<!--        });-->
+
+<!--        function displayImage(input) {-->
+<!--            var reader = new FileReader();-->
+<!--            reader.onload = function(e) {-->
+<!--                document.getElementById('display').src = e.target.result;-->
+<!--            }-->
+<!--            reader.readAsDataURL(input.files[0]);-->
+<!--        }-->
+
+<!--        document.querySelector('input[type="file"]').addEventListener('change', function() {-->
+<!--            displayImage(this);-->
+<!--            document.getElementById('display').style.display = 'block';-->
+<!--            document.getElementById('result').innerHTML = ''; // Clear previous results-->
+<!--        });-->
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--working 5-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Image Classification</h1>
+    <form id="upload-form" action="/classify" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*">
+        <input type="submit" value="Upload and Classify">
+    </form>
+    <img id="display" src="" style="max-width: 500px;">
+    <div id="loading" class="loader-container" style="display:none;">
+        <div class="loader"></div>
+        Loading...
+    </div>
+    <div id="result"></div>
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var formData = new FormData(this);
+
+            var loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            fetch('/classify', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '';
+
+                data.forEach(function(item) {
+                    var label = item.label;
+                    var score = item.score;
+
+                    var progress = document.createElement('div');
+                    progress.className = 'progress';
+                    progress.innerHTML = '<span class="label">' + label + '</span><progress value="' + (score * 100) + '" max="100"></progress><span class="score">' + (score * 100).toFixed(2) + '%</span>';
+
+                    resultDiv.appendChild(progress);
+                });
+
+                loading.style.display = 'none';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+
+        function displayImage(input) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('display').src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        document.querySelector('input[type="file"]').addEventListener('change', function() {
+            displayImage(this);
+            document.getElementById('display').style.display = 'block';
+            document.getElementById('result').innerHTML = ''; // Clear previous results
+        });
+    </script>
+</body>
+</html>

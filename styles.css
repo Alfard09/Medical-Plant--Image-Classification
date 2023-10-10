@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
+
+#display {
+    margin: 20px auto;
+    max-width: 500px;
+    display: none;
+}
+
+.loader-container {
+    margin-top: 20px;
+}
+
+.loader {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #3498db;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.progress {
+    margin: 10px 0;
+}
+
+.progress progress {
+    width: 200px;
+    height: 20px;
+}
+
+.progress span.label {
+    display: block;
+    font-weight: bold;
+}
+
+.progress span.score {
+    font-size: 14px;
+}
